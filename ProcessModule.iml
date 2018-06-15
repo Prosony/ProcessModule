@@ -26,6 +26,7 @@
       <sourceFolder url="file://$MODULE_DIR$/source/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/source/code" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/source/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="10" jdkType="JavaSDK" />
@@ -50,5 +51,9 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:6.2" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:6.2" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:9.4.11.v20180605" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.1" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
+    <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
+    <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
   </component>
 </module>

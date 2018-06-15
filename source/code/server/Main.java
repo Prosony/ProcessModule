@@ -6,22 +6,19 @@ import org.eclipse.jetty.plus.webapp.PlusConfiguration;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.webapp.*;
+import services.config.GetConfig;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.*;
-import java.util.Scanner;
 
 public class Main {
 
-    private final static int PORT = 8000;
+    private static GetConfig config = GetConfig.getInstance();
+    private final static int PORT = config.getPORT();
 
     public static void main(String[] args) throws Exception {
         Server server = new Server(PORT);
-
         URI webResourceBase = findWebResourceBase();
         System.err.println("Using BaseResource: " + webResourceBase);
         WebAppContext context = new WebAppContext();
@@ -45,15 +42,11 @@ public class Main {
         server.join();
     }
 
-    private static URI findWebResourceBase() { //ClassLoader classLoader
-
+    private static URI findWebResourceBase() {  //ClassLoader classLoader
         String fileName = "webapp/WEB-INF/web.xml";
-
-        //Get file from resources folder
-        ClassLoader classLoader = Main.class.getClassLoader();
+        ClassLoader classLoader = Main.class.getClassLoader();  //Get file from resources folder
         try {
-            // Look for resource in classpath (best choice when working with archive jar/war file)
-            URL webXml = classLoader.getResource(fileName);
+            URL webXml = classLoader.getResource(fileName); // Look for resource in classpath (best choice when working with archive jar/war file)
             if (webXml != null) {
                 URI uri = webXml.toURI().resolve("..").normalize();
                 System.err.printf("WebResourceBase (Using ClassLoader reference) %s%n", uri);
@@ -63,7 +56,6 @@ public class Main {
         catch (URISyntaxException e) {
             throw new RuntimeException("Bad ClassPath reference for: " + fileName,e);
         }
-
         return null;
     }
 }
