@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ProcessModule:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProcessModule_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ProcessModule/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ProcessModule" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.1" />
+          <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: junit:junit:4.10" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.39" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-api:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-catalina:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-coyote:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-el-api:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jaspic-api:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jni:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jsp-api:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-servlet-api:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-util-scan:8.5.16" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-util:8.5.16" />
+          <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
