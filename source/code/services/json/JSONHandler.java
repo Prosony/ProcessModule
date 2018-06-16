@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class JSONHandler {
 
-        private LocalLog LOG = LocalLog.getInstance();
+        private LocalLog LOG = new LocalLog();
 
         public JSONObject getJSONFromRequest(HttpServletRequest request){
             StringBuilder builder = new StringBuilder();

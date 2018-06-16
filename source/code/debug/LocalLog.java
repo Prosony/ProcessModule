@@ -8,10 +8,10 @@ import java.io.IOException;
 public class LocalLog {
 
     private static LocalLog instance = new LocalLog();
-
     public static LocalLog getInstance(){
         return instance;
     }
+    public LocalLog(){}
 
     private final String ANSI_RESET = "\u001B[0m";
     private final String ANSI_BLACK = "\u001B[30m";
@@ -26,19 +26,19 @@ public class LocalLog {
     private GetConfig config = GetConfig.getInstance();
 
     public void info(String message){
-        if (config.isDebug()){
+        if (config.isDEBUG()){
             System.out.println(ANSI_YELLOW+"[INFO]"+ ANSI_RESET +" "+message);
         }
 
     }
     public void success(String message){
-        if (config.isDebug()){
-            System.out.println(ANSI_YELLOW+"[SUCCESS]"+ ANSI_RESET +" "+message);
+        if (config.isDEBUG()){
+            System.out.println(ANSI_GREEN+"[SUCCESS]"+ ANSI_RESET +" "+message);
         }
     }
     public void error(String error){
-        if (config.isDebug()){
-            System.out.println(ANSI_RED+"[SUCCESS]"+ ANSI_RESET +" "+error);
+        if (config.isDEBUG()){
+            System.out.println(ANSI_RED+"[ERROR]"+ ANSI_RESET +" "+error);
         }
     }
     public void console(BufferedReader reader) throws IOException {

@@ -19,9 +19,8 @@ import java.io.InputStreamReader;
 public class LoadServerServlet extends HttpServlet {
 
     private GetConfig config = GetConfig.getInstance();
-    private LocalLog LOG = LocalLog.getInstance();
+    private LocalLog LOG = new LocalLog();
     private AnswerService answer = new AnswerService();
-
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) { // 443030 Conan
 
@@ -30,19 +29,16 @@ public class LoadServerServlet extends HttpServlet {
         String folder = String.valueOf(json.get("folder"));
         String login = String.valueOf(json.get("login"));
         String password = String.valueOf(json.get("password"));
-
-
         if (!appID.isEmpty() && !folder.isEmpty()) {
             try {
                 Process process;
                 if (!login.isEmpty() && !password.isEmpty()) {
                     process = new ProcessBuilder(config.getSTEAM_CMD_PATH(), "+login", "anonymous", "+force_install_dir",
-                            config.getPATH_FOLDER_SERVERS() + folder, "+app_update", appID, "+update", "+quit").start();
+                            config.getFORCE_INSTALL_DIR() + folder, "+app_update", appID, "+update", "+quit").start();
                 } else {
-                    process = new ProcessBuilder(config.getPATH_FOLDER_SERVERS(), "+login", login, password, "+force_install_dir",
-                            config.getPATH_FOLDER_SERVERS() + folder, "+app_update", appID, "+update", "+quit").start();
+                    process = new ProcessBuilder(config.getFORCE_INSTALL_DIR(), "+login", login, password, "+force_install_dir",
+                            config.getFORCE_INSTALL_DIR() + folder, "+app_update", appID, "+update", "+quit").start();
                 }
-
                 LOG.info("process info: " + process.info());
                 LOG.info("Process was startup, PID: " + process.pid());
                 LOG.console(new BufferedReader(new InputStreamReader(process.getInputStream(), "Cp866")));
