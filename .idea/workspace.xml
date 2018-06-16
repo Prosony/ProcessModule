@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b09e772a-8acc-4c3b-835a-42e84990d470" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/source/code/services/file/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/code/debug/LocalLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/code/debug/LocalLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/code/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/code/server/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/code/services/config/GetConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/code/services/config/GetConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/code/services/json/JSONHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/code/services/json/JSONHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/code/services/file/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/code/services/file/FileService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/code/servlets/control/StartServerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/code/servlets/control/StartServerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/code/servlets/manager/LoadServerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/source/code/servlets/manager/LoadServerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/resources/global-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/source/resources/global-config.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,11 +31,10 @@
       <file leaf-file-name="StartServerServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/code/servlets/control/StartServerServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="48" column="60" selection-start-line="48" selection-start-column="60" selection-end-line="48" selection-end-column="60" />
+            <state relative-caret-position="778">
+              <caret line="71" column="14" lean-forward="true" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1529167930170" expanded="true" signature="1649:2757" ph="..." />
               </folding>
             </state>
           </provider>
@@ -51,8 +43,8 @@
       <file leaf-file-name="FileService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/code/services/file/FileService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+            <state relative-caret-position="323">
+              <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -371,12 +363,12 @@
       <workItem from="1529076981639" duration="686000" />
       <workItem from="1529154269198" duration="4052000" />
       <workItem from="1529160361153" duration="3223000" />
-      <workItem from="1529164469910" duration="3577000" />
+      <workItem from="1529164469910" duration="5263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25598000" />
+    <option name="totallyTimeSpent" value="27284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
@@ -790,8 +782,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/code/services/file/FileService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
+        <state relative-caret-position="323">
+          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -800,11 +792,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/code/servlets/control/StartServerServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="48" column="60" selection-start-line="48" selection-start-column="60" selection-end-line="48" selection-end-column="60" />
+        <state relative-caret-position="778">
+          <caret line="71" column="14" lean-forward="true" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1529167930170" expanded="true" signature="1649:2757" ph="..." />
           </folding>
         </state>
       </provider>

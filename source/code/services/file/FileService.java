@@ -17,39 +17,45 @@ public class FileService {
             if (!resultFolder.exists()){
                 LOG.info("[FileService][copyFolders] directory does not exist, path: "+directoryTo);
                 isCreate = resultFolder.mkdirs();
-            }else{
-                isCreate = true;
-            }
-            if (isCreate){
-                LOG.success("[FileService][copyFolders] directory was created, path: "+directoryTo);
-                File source = new File(directoryFrom);
-                LOG.info(directoryFrom);
-                String files[] = source.list();
-                for (String file: files){
-                    LOG.info(file);
+                if (isCreate){
+                    LOG.success("[FileService][copyFolders] directory was created, path: "+directoryTo);
+                    File source = new File(directoryFrom);
+                    LOG.info(directoryFrom);
+                    String files[] = source.list();
+                    if (files != null){
+                        for (String file: files){
+                            LOG.info(file);
+                        }
+                        copyFiles(new File(directoryFrom), new File(directoryTo));
+                        return true;
+                    }else{
+                        LOG.error("[FileService][copyFolders] source.list() is null!");
+                        return false;
+                    }
+                }else{
+                    LOG.error("[FileService][copyFolders] directory was not created, path: "+directoryTo);
                 }
-                copyFiles(new File(directoryFrom),new File(directoryTo));
             }else{
-                LOG.error("[FileService][copyFolders] directory was not created, path: "+directoryTo);
+                LOG.info("[FileService][copyFolders] directory and files already install!");
+                return true;
             }
         }else{
-            LOG.error("[FileService][copyFolders] Directory does not exist, path: "+directoryFrom);
+            LOG.error("[FileService][copyFolders] directory does not exist, path: "+directoryFrom);
             return false;
         }
         return false;
     }
 
     private void copyFiles(File source, File dest){
+
         if(source.isDirectory()){
             boolean isCreate = false;
-
             if(!dest.exists()){ //if directory not exists, create it
                 isCreate = dest.mkdirs();
                 LOG.info("[FileService][copyFiles] Directory copied from " +source+ " to " +dest);
             }else{
                 isCreate = true;
             }
-
             if (isCreate){
                 String files[] = source.list();//list all the directory contents
                 if (files != null){
