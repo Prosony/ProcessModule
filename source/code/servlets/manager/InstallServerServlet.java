@@ -1,4 +1,4 @@
-package servlets.control;
+package servlets.manager;
 
 import debug.LocalLog;
 import org.json.simple.JSONObject;
@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 @WebServlet("/service/game/install")
-public class StartServerServlet extends HttpServlet {
+public class InstallServerServlet extends HttpServlet {
 
     private GetConfig config = GetConfig.getInstance();
     private LocalLog LOG = new LocalLog();
@@ -34,7 +33,8 @@ public class StartServerServlet extends HttpServlet {
         StringBuilder copyTo = new StringBuilder();
         copyTo.append(config.getPATH_FOLDER_USERS()).append("user_").append(userID).append("/server_").append(appID);
         FileService service = new FileService();
-        boolean isInstall = service.copyFolders(directory, copyTo.toString());
+        boolean isInstall =
+                service.copyFolders(directory, copyTo.toString());
 
         if (isInstall){ //create win.service
             StringBuilder serviceName = new StringBuilder();

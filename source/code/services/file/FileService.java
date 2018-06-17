@@ -14,7 +14,7 @@ public class FileService {
 
         if (sourceFolder.exists()){
             boolean isCreate = false;
-            if (!resultFolder.exists()){
+            if (!resultFolder.exists()){ //TODO write method that will be checking all files in directory
                 LOG.info("[FileService][copyFolders] directory does not exist, path: "+directoryTo);
                 isCreate = resultFolder.mkdirs();
                 if (isCreate){
@@ -45,9 +45,7 @@ public class FileService {
         }
         return false;
     }
-
     private void copyFiles(File source, File dest){
-
         if(source.isDirectory()){
             boolean isCreate = false;
             if(!dest.exists()){ //if directory not exists, create it
@@ -89,5 +87,25 @@ public class FileService {
             }
         }
     }
-
+    public void removeFolder(File path){ // TODO do something with empty folder. This code delete only file
+      if (path.isDirectory()){
+          String subdirectories[] = path.list();
+          for(String subdirectory: subdirectories){
+              File file = new File(path.getPath()+"\\"+subdirectory);
+              LOG.info("file.getAbsolutePath(): "+file.getPath());
+              if (file.isFile()){
+                  boolean isDeleted = file.delete();
+                  if (isDeleted){
+                      LOG.success("file was delete, path: "+file.getPath());
+                  }else{
+                      LOG.error("file does not delete, path: "+file.getPath());
+                  }
+              }else{
+                  removeFolder(file);
+              }
+          }
+      }else {
+          LOG.info("file.getAbsolutePath(): "+path.getPath());
+      }
+    }
 }

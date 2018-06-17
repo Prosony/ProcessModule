@@ -25,12 +25,10 @@ public class GetConfig {
             String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
             String globalConfigPath = rootPath + "global-config.properties";
             properties.load(new FileInputStream(globalConfigPath));
-
             STEAM_CMD_PATH = String.valueOf(properties.getProperty("STEAM_CMD_PATH"));
             PATH_FOLDER_USERS = String.valueOf(properties.getProperty("PATH_FOLDER_USERS"));
             FORCE_INSTALL_DIR = String.valueOf(properties.getProperty("FORCE_INSTALL_DIR"));
             DEBUG = Boolean.valueOf(properties.getProperty("DEBUG"));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
