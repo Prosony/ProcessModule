@@ -12,6 +12,7 @@ public class WelcomeServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response){
 //        response.setContentType("application/json; charset=UTF-8");
 //        response.setHeader("Access-Control-Allow-Origin", "*");

@@ -18,16 +18,20 @@ public class GetConfig {
     private String FORCE_INSTALL_DIR;
     private boolean DEBUG;
     private  String PATH_FOLDER_USERS;
+    private String  NSSM_EXEC_PATH;
 
-    public GetConfig(){
+    private GetConfig(){
         try {
             Properties properties = new Properties();
             String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
             String globalConfigPath = rootPath + "global-config.properties";
             properties.load(new FileInputStream(globalConfigPath));
+
             STEAM_CMD_PATH = String.valueOf(properties.getProperty("STEAM_CMD_PATH"));
             PATH_FOLDER_USERS = String.valueOf(properties.getProperty("PATH_FOLDER_USERS"));
             FORCE_INSTALL_DIR = String.valueOf(properties.getProperty("FORCE_INSTALL_DIR"));
+            NSSM_EXEC_PATH = String.valueOf(properties.getProperty("NSSM_EXEC_PATH"));
+
             DEBUG = Boolean.valueOf(properties.getProperty("DEBUG"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,12 +44,18 @@ public class GetConfig {
     public String getFORCE_INSTALL_DIR() {
         return FORCE_INSTALL_DIR;
     }
+    public String getPATH_FOLDER_USERS() {
+        return PATH_FOLDER_USERS;
+    }
+    public String getNSSM_EXEC_PATH() {
+        return NSSM_EXEC_PATH;
+    }
+
     public boolean isDEBUG() {
         return DEBUG;
     }
 
-    public String getPATH_FOLDER_USERS() {
-        return PATH_FOLDER_USERS;
-    }
+
+
 }
 

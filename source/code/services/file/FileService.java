@@ -102,6 +102,12 @@ public class FileService {
                   }
               }else{
                   removeFolder(file);
+                  boolean folderIsDelete = file.delete();
+                  if (folderIsDelete){
+                      LOG.success("folder was delete, path: "+file);
+                  }else{
+                      LOG.error("folder does not delete, path: "+file);
+                  }
               }
           }
       }else {

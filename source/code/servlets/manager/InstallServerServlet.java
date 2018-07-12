@@ -22,33 +22,33 @@ public class InstallServerServlet extends HttpServlet {
     private LocalLog LOG = new LocalLog();
     private AnswerService answer = new AnswerService();
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         JSONObject json = new JSONHandler().getJSONFromRequest(request);
         String appID = String.valueOf(json.get("app_id"));
         String userID = String.valueOf(json.get("user_id"));
-        String directory = String.valueOf(json.get("directory"));
-        String pathExec = String.valueOf(json.get("path_exec"));
+        String directory = String.valueOf(json.get("directory_steamcmd"));//C:\Users\proso\Desktop\steamcmd\steamapps\common\Conan\
+        String pathExec = String.valueOf(json.get("server_exec_path"));//ConanSandboxServer.exe
 
         Process process = null;
         StringBuilder copyTo = new StringBuilder();
-        copyTo.append(config.getPATH_FOLDER_USERS()).append("user_").append(userID).append("/server_").append(appID);
+        copyTo.append(config.getPATH_FOLDER_USERS()).append("user_").append(userID).append("\\server_").append(appID).append("\\");
         FileService service = new FileService();
-        boolean isInstall =
-                service.copyFolders(directory, copyTo.toString());
+        boolean isInstall = service.copyFolders(directory, copyTo.toString());
 
         if (isInstall){ //create win.service
-            StringBuilder serviceName = new StringBuilder();
-            serviceName.append("gecp_").append(appID);
+            String serviceDisplayName = "gecp_"+appID;
             try { //TODO change directory. Create win.service from user directory
-                Process checkService = Runtime.getRuntime().exec("SC query "+serviceName.toString());
+                Process checkService = Runtime.getRuntime().exec("SC query "+serviceDisplayName);
                 int isAlreadyInstall = checkService.waitFor();
                 if (isAlreadyInstall != 0){
-                    process = Runtime.getRuntime().exec("SC create "+serviceName.toString()+
-                            " binPath= \""+copyTo.toString()+pathExec+"\" DisplayName=\""+serviceName.toString()+"\" type=\"own\" start=\"auto\""); //create windows service
+                    StringBuilder builderQuery = new StringBuilder();
+                    builderQuery.append("cmd /C ").append(config.getNSSM_EXEC_PATH()).append(" install ").append(serviceDisplayName).append(" ").append(copyTo.toString()).append(pathExec);
+                    LOG.info("[InstallServerServlet] query was built, builderQuery: "+builderQuery.toString());
+                    process = Runtime.getRuntime().exec(builderQuery.toString());
                     LOG.info("process info: "+process.info());
-                    BufferedReader reader = null;
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(),"Cp866"));
                     LOG.info("Process was startup, PID: "+process.pid());
-                    reader = new BufferedReader(new InputStreamReader(process.getInputStream(),"Cp866"));
                     String s;
                     while ((s = reader.readLine()) != null) {
                         LOG.info(s);
@@ -61,10 +61,9 @@ public class InstallServerServlet extends HttpServlet {
                         answer.sendToClient(response,500);
                     }
                 }else{
-                    LOG.info("service already install, DisplayName: "+serviceName.toString());
+                    LOG.info("service already install, DisplayName: "+serviceDisplayName);
                     answer.sendToClient(response,200);
                 }
-
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
                 answer.sendToClient(response,500);
